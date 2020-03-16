@@ -1,15 +1,18 @@
 ---
-version: "3"
+version: "2.1"
 services:
   folding-at-home:
-    image: yurinnick/folding-at-home
+    build: ./
     container_name: folding-at-home
     environment:
-      - USER=Anonymous
-      - TEAM=0
-      - ENABLE_GPU=false
-      - ENABLE_SMP=true
+      - FAH_USER=ffissore
+      - FAH_TEAM=0
+      - FAH_ENABLE_GPU=false
+      - FAH_ENABLE_SMP=true
     ports:
       - 7396:7396
       - 36330:36330
-    restart: unless-stopped
+    volumes:
+      - "fah-data:/fah-data"
+volumes:
+  fah-data:

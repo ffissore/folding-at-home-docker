@@ -1,4 +1,4 @@
-FROM debian:stable-slim
+FROM balenalib/%%BALENA_MACHINE_NAME%%-debian:buster-run
 
 ARG version="v7.5"
 
@@ -22,12 +22,17 @@ COPY --chown=folding:folding entrypoint.sh /opt/fahclient
 
 RUN chmod +x /opt/fahclient/entrypoint.sh
 
-ENV USER "Anonymous"
-ENV TEAM "0"
-ENV ENABLE_GPU "false"
-ENV ENABLE_SMP "true"
+ENV FAH_USER "Anonymous"
+ENV FAH_TEAM "0"
+ENV FAH_ENABLE_GPU "false"
+ENV FAH_ENABLE_SMP "true"
+
+RUN mkdir /fah-data && \
+    chown folding:folding /fah-data
+VOLUME /fah-data
 
 USER folding
+
 WORKDIR /opt/fahclient
 
 EXPOSE 7396
