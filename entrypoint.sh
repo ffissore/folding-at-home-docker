@@ -10,7 +10,9 @@ set -e
     --power=full \
     --gui-enabled=false \
     --data-directory=/fah-data \
+    --core-dir=/fah-cores \
     --cpu-affinity=true \
     --allow=0/0 \
     --web-allow=0/0 \
+    --command-allow-no-pass=0/0
     "${@}"

@@ -14,5 +14,7 @@ services:
       - 36330:36330
     volumes:
       - "fah-data:/fah-data"
+      - "fah-cores:/fah-cores"
 volumes:
   fah-data:
+  fah-cores:

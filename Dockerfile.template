@@ -28,8 +28,11 @@ ENV FAH_ENABLE_GPU "false"
 ENV FAH_ENABLE_SMP "true"
 
 RUN mkdir /fah-data && \
-    chown folding:folding /fah-data
+    chown folding:folding /fah-data && \
+    mkdir /fah-cores && \
+    chown folding:folding /fah-cores
 VOLUME /fah-data
+VOLUME /fah-cores
 
 USER folding
 
